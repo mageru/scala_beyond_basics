@@ -9,58 +9,67 @@ class AdvancedPatternMatchingSpec extends FunSpec with Matchers {
 
   describe("Simple Pattern Matches") {
     it("can be as simple as an assignment") {
-      pending
+      val x:Int = 40
+      x should be (40)
     }
 
     it("can also be more meaningful as something like a tuple") {
-      pending
+      val (x, y) = (100, "Foo")
+      x should be (100)
+      y should be ("Foo")
     }
 
     it( """has the ability to have a value name and an @
           |  to not only capture the individual items but the whole item""".stripMargin) {
-      pending
+      val t@(x, y) = (100, "Foo")
+      x should be (100)
+      y should be ("Foo")
+      t should be (100 -> "Foo")
     }
 
     it("can be used with an Optional, and often is used as such, let's do a Some") {
-      pending
+      val Some(x) = Some(100)
+      x should be (100)
     }
 
     it( """can use an _ to signify that you are not interested in a particular element,
           |  let's try a tuple first.""".stripMargin) {
-      pending
+      val (x, _, z) = (4, 400.2, "Foo")
+      x should be (4)
+      z should be ("Foo")
     }
 
     it( """can use an _ to signify that you are not interested in a particular element,
           |  and in an Option[T] although there is no way to extract a value but if you
           |  want to ensure a shape, it would make sense""".stripMargin) {
-      pending
+      val Some(_) = Some(100)
     }
 
     it( """can use an _ even in an assignment, although, only if you wish match a particular
           |  shape""".stripMargin) {
-      pending
+      val (_:Int) = 40
     }
 
 
     it( """We can also match Lists by assignment, start off simple,
           |  this is a match on an empty list""".stripMargin) {
-      pending
+      val a@List() = List()
+      a should be ('empty)
     }
 
     it( """can also match using a variant form since Nil represents an empty list""") {
-      pending
-    }
-
-    it( """can also match on an empty list, let's try the list form""") {
-      pending
+      val a@Nil = List()
+      a should be ('empty)
     }
 
     it( """can also match a single item using the :: form""") {
-      pending
+      val h :: Nil = List("Foo")
+      h should be ("Foo")
     }
 
     it( """can also match a single item using the List() form""") {
-      pending
+      val List(h) = List(10)
+      h should be (10)
     }
 
     it(
