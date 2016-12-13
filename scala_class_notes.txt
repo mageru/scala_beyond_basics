@@ -1,0 +1,12 @@
+-------------- Scala Class Notes ------------
+
+cntrl+shift+F10 to activate test in IntelliJ for Scala
+
+sbt -> from console type "testOnly"
+
+testOnly * 
+testOnly com.ora.scalabeyondbasics.AdvencedPatternMatchingSpec
+
+# to keep it running
+~ testOnly com.ora.scalabeyondbasics.AdvencedPatternMatchingSpec
+
